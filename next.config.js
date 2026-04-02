@@ -7,7 +7,7 @@ const nextConfig = {
   },
 
   basePath: '/lesspay',
-  assetPrefix: '/lesspay/',
+  assetPrefix: '/lesspay',
 };
 
 module.exports = nextConfig;
