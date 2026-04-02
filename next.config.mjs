@@ -6,8 +6,6 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  basePath: '/lesspay',
-  assetPrefix: '/lesspay',
+ 
 };
-
-module.exports = nextConfig;
+ export default nextConfig;
