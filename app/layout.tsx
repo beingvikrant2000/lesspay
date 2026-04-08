@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat" });
 
 export const metadata: Metadata = {
-  title: 'LessPay | Product Case Study',
-  description: 'A Product Owner Deep Dive into Payments, Loyalty, and Hyperlocal Commerce',
+  title: 'Product Portfolio | Vikrant Tanwar',
+  description: 'In-depth product case studies exploring strategy, business models, and competitive positioning',
   generator: 'v0.app',
   icons: {
     icon: [
