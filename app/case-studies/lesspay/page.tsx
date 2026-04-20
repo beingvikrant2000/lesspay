@@ -1,6 +1,5 @@
 "use client"
 
-import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/sections/hero"
 import { ExecutivePOVSection } from "@/components/sections/executive-pov"
 import { RealityCheckSection } from "@/components/sections/reality-check"
@@ -20,7 +19,6 @@ import { FooterSection } from "@/components/sections/footer"
 export default function LessPay() {
   return (
     <main className="min-h-screen bg-background">
-      <Navbar />
       <HeroSection />
       <ExecutivePOVSection />
       <RealityCheckSection />

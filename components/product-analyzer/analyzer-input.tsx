@@ -46,6 +46,7 @@ export function ProductAnalyzerInput({ onSubmit, isLoading, error }: ProductAnal
           type="text"
           id="productName"
           placeholder="e.g., Notion, Figma, Stripe..."
+          suppressHydrationWarning
           value={productName}
           onChange={(e) => {
             setProductName(e.target.value)
@@ -63,6 +64,7 @@ export function ProductAnalyzerInput({ onSubmit, isLoading, error }: ProductAnal
         <textarea
           id="productDescription"
           placeholder="What does it do? What problem does it solve? Be specific..."
+          suppressHydrationWarning
           value={productDescription}
           onChange={(e) => setProductDescription(e.target.value)}
           disabled={isLoading}
@@ -79,6 +81,7 @@ export function ProductAnalyzerInput({ onSubmit, isLoading, error }: ProductAnal
           type="email"
           id="userEmail"
           placeholder="your@email.com"
+          suppressHydrationWarning
           value={userEmail}
           onChange={(e) => setUserEmail(e.target.value)}
           disabled={isLoading}

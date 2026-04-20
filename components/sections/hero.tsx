@@ -113,7 +113,7 @@ export function HeroSection() {
         {/* Insight sticky note (EXACT from case study) */}
         <div className="sticky-note sticky-pink p-4 -rotate-2 inline-block mb-12">
           <p className="font-[family-name:var(--font-caveat)] text-xl md:text-2xl italic">
-            "LessPay is not a generic UPI wallet - it is a localized loyalty platform disguised as a payment app."
+            &quot;LessPay is not a generic UPI wallet - it is a localized loyalty platform disguised as a payment app.&quot;
           </p>
         </div>
 

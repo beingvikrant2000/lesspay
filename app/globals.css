@@ -81,7 +81,12 @@
   .sticky-blue { background-color: transparent; }
   .sticky-green { background-color: transparent; }
   .sticky-orange { background-color: transparent; }
-
+  
+  .sticky-yellow-color  { background-color: #fff69b }
+  .sticky-pink-color  { background-color: #f6c2d9 }
+  .sticky-blue-color  { background-color: #a1c8e9 }
+  .sticky-green-color  { background-color: #bcdfc9 }
+  .sticky-orange-color  { background-color: #e4dae2 }
   .tape {
     display: none;
   }

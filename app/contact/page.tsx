@@ -72,7 +72,7 @@ export default function Contact() {
       {/* Hero section */}
       <section className="min-h-[60vh] flex flex-col items-center justify-center px-6 py-12 relative">
         <div className="absolute top-20 left-2 md:top-32 md:left-12 sticky-note sticky-blue p-2 md:p-3 rotate-3 block">
-          <p className="font-[family-name:var(--font-caveat)] text-xs md:text-base">let's talk</p>
+          <p className="font-[family-name:var(--font-caveat)] text-xs md:text-base">let&apos;s talk</p>
         </div>
         <div className="absolute bottom-40 right-2 md:bottom-32 md:right-12 sticky-note sticky-green p-2 md:p-3 -rotate-2 hidden md:block">
           <p className="font-[family-name:var(--font-caveat)] text-base">all ears</p>
@@ -85,7 +85,7 @@ export default function Contact() {
               Get In Touch
             </p>
             <h1 className="font-[family-name:var(--font-caveat)] text-5xl md:text-6xl font-bold tracking-tight">
-              Let's Connect
+              Let&apos;s Connect
             </h1>
             <div
               className="w-32 h-1 bg-foreground/30 mx-auto mt-4"
@@ -97,7 +97,7 @@ export default function Contact() {
 
           <div className="sticky-note sticky-pink p-6 rotate-1 max-w-xl mx-auto">
             <p className="text-lg text-foreground/80 text-balance">
-              Have a question about product strategy, market analysis, or just want to chat? I'd love to hear from you.
+              Have a question about product strategy, market analysis, or just want to chat? I&apos;d love to hear from you.
             </p>
           </div>
         </div>

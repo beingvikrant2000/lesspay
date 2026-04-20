@@ -5,15 +5,36 @@ interface EmailRequest {
   email: string
   analysis: {
     productName: string
-    problem: string
-    insight: string
-    strategy: string
-    growth: string
-    analysis: string
+    overview?: string
+    problem?: string
+    user_behavior?: string
+    value?: string
+    business?: string
+    competition?: string
+    growth?: string
+    risks?: string
+    zero_to_one?: string
+    execution_30_60_90?: string
+    verdict?: string
+    // Backward-compatible keys from older payloads
+    insight?: string
+    strategy?: string
+    analysis?: string
   }
 }
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+
+function formatText(value?: string): string {
+  if (!value) return 'Not provided'
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+    .replace(/\n/g, '<br>')
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,6 +64,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const strategy = analysis.strategy || analysis.zero_to_one || analysis.value
+    const fullAnalysis =
+      analysis.analysis ||
+      [
+        analysis.overview,
+        analysis.problem,
+        analysis.user_behavior,
+        analysis.value,
+        analysis.business,
+        analysis.competition,
+        analysis.growth,
+        analysis.risks,
+        analysis.zero_to_one,
+        analysis.execution_30_60_90,
+        analysis.verdict,
+      ]
+        .filter(Boolean)
+        .join('\n\n')
+
     // Create HTML email
     const htmlContent = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #0a0a0a;">
@@ -57,27 +97,27 @@ export async function POST(request: NextRequest) {
 
           <div style="margin-bottom: 30px;">
             <h3 style="margin: 0 0 8px 0; font-size: 16px; color: #0a0a0a; font-weight: 600;">Problem</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${analysis.problem}</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${formatText(analysis.problem)}</p>
           </div>
 
           <div style="margin-bottom: 30px;">
             <h3 style="margin: 0 0 8px 0; font-size: 16px; color: #0a0a0a; font-weight: 600;">Market Insight</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${analysis.insight}</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${formatText(analysis.insight || analysis.overview)}</p>
           </div>
 
           <div style="margin-bottom: 30px;">
             <h3 style="margin: 0 0 8px 0; font-size: 16px; color: #0a0a0a; font-weight: 600;">Strategy</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${analysis.strategy}</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${formatText(strategy)}</p>
           </div>
 
           <div style="margin-bottom: 30px;">
             <h3 style="margin: 0 0 8px 0; font-size: 16px; color: #0a0a0a; font-weight: 600;">Growth Levers</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${analysis.growth}</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${formatText(analysis.growth)}</p>
           </div>
 
           <div style="background: #f5f5f5; padding: 20px; border-radius: 4px; margin: 30px 0;">
             <h3 style="margin: 0 0 10px 0; font-size: 16px; color: #0a0a0a; font-weight: 600;">Full Analysis</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${analysis.analysis.replace(/\n/g, '<br>')}</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #666;">${formatText(fullAnalysis)}</p>
           </div>
         </div>
 

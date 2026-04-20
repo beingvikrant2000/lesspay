@@ -12,26 +12,17 @@ interface AnalysisRequest {
 
 interface AnalysisResponse {
   productName: string
-  market_opportunity: string | Record<string, unknown>
-  customer_insights: string | Record<string, unknown>
-  value_proposition: string | Record<string, unknown>
-  product_quality: string | Record<string, unknown>
-  unit_economics: string | Record<string, unknown>
-  revenue_model: string | Record<string, unknown>
-  cost_structure: string | Record<string, unknown>
-  competitive_position: string | Record<string, unknown>
-  defensibility: string | Record<string, unknown>
-  growth_mechanics: string | Record<string, unknown>
-  product_strategy: string | Record<string, unknown>
-  go_to_market: string | Record<string, unknown>
-  financial_health: string | Record<string, unknown>
-  team_quality: string | Record<string, unknown>
-  risk_assessment: string | Record<string, unknown>
-  metrics_analytics: string | Record<string, unknown>
-  product_market_fit: string | Record<string, unknown>
-  regulatory_compliance: string | Record<string, unknown>
-  future_potential: string | Record<string, unknown>
-  executive_summary: string
+  overview: string
+  problem: string
+  user_behavior: string
+  value: string
+  business: string
+  competition: string
+  growth: string
+  risks: string
+  zero_to_one: string
+  execution_30_60_90: string
+  verdict: string
 }
 
 export function ProductAnalyzer() {
@@ -56,10 +47,10 @@ export function ProductAnalyzer() {
         throw new Error(result.error || "Failed to analyze product")
       }
 
-      // Store analysis in localStorage and redirect
+      // ✅ store new structure
       localStorage.setItem("productAnalysis", JSON.stringify(result))
 
-      // If email was provided, send it
+      // optional email
       if (data.userEmail) {
         await sendEmail(data.userEmail, result)
       }
@@ -89,7 +80,6 @@ export function ProductAnalyzer() {
       }
     } catch (err) {
       console.error("Email send error:", err)
-      // Don't throw - let the redirect happen even if email fails
     }
   }
 
